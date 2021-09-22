@@ -78,12 +78,12 @@ def get_user_data() -> bool:
         FeatureExtractor(uploaded_file, key, input_graph, FFT_graph, STFT_graph)
 
         return True
-    else:
-        file = 'A4.wav'
-        key = file.replace('.wav', '')
+    # else:
+    #     file = 'A4.wav'
+    #     key = file.replace('.wav', '')
         
-        FeatureExtractor(uploaded_file, key, input_graph, FFT_graph, STFT_graph)
-        return True
+    #     FeatureExtractor(uploaded_file, key, input_graph, FFT_graph, STFT_graph)
+    #     return True
         
     return False
 
