@@ -78,7 +78,13 @@ def get_user_data() -> bool:
         FeatureExtractor(uploaded_file, key, input_graph, FFT_graph, STFT_graph)
 
         return True
-
+    else:
+        file = 'A4.wav'
+        key = file.replace('.wav', '')
+        
+        FeatureExtractor(uploaded_file, key, input_graph, FFT_graph, STFT_graph)
+        return True
+        
     return False
 
 
@@ -404,45 +410,45 @@ if get_user_data():
         st.text('')
         st.text('')
         st.text('')  
-        FPlot = st.beta_expander(label='Features plot note')
-        with FPlot: 
-            """
-            Here we have a plot that compares the generated guitar features with the real sound featuers. 
-            The predicted guitar features are compared with the real piano features and the real guitar features. 
-            From this overlay, it is clear that the neural network has been trained well, and the features generated are very close to what they should be!
-            """
+        # FPlot = st.beta_expander(label='Features plot note')
+        # with FPlot: 
+        #     """
+        #     Here we have a plot that compares the generated guitar features with the real sound featuers. 
+        #     The predicted guitar features are compared with the real piano features and the real guitar features. 
+        #     From this overlay, it is clear that the neural network has been trained well, and the features generated are very close to what they should be!
+        #     """
 
-    with feat_table: 
-        st.title('Generated guitar features')
-        del gen_guitar_feats['Key']
-        savemat("piano/generate/{}_generated.mat".format(key), gen_guitar_feats)
-        st.header("Key: {}".format(key))
+    # with feat_table: 
+    #     st.title('Generated guitar features')
+    #     del gen_guitar_feats['Key']
+    #     savemat("piano/generate/{}_generated.mat".format(key), gen_guitar_feats)
+    #     st.header("Key: {}".format(key))
 
-        gen_guitar_feats["Frequency"] = gen_guitar_feats["omega"]
-        del gen_guitar_feats["omega"]
+    #     gen_guitar_feats["Frequency"] = gen_guitar_feats["omega"]
+    #     del gen_guitar_feats["omega"]
 
-        gen_guitar_feats["Phase angle"] = gen_guitar_feats["phi"]
-        del gen_guitar_feats["phi"]
+    #     gen_guitar_feats["Phase angle"] = gen_guitar_feats["phi"]
+    #     del gen_guitar_feats["phi"]
 
-        gen_guitar_feats["Amplitude"] = gen_guitar_feats["a"]
-        del gen_guitar_feats["a"]
+    #     gen_guitar_feats["Amplitude"] = gen_guitar_feats["a"]
+    #     del gen_guitar_feats["a"]
 
-        gen_guitar_feats["Damping Coefficient"] = gen_guitar_feats["b"]
-        del gen_guitar_feats["b"]
+    #     gen_guitar_feats["Damping Coefficient"] = gen_guitar_feats["b"]
+    #     del gen_guitar_feats["b"]
     
-        st.table(gen_guitar_feats)
+    #     st.table(gen_guitar_feats)
 
     with feat_table_desc:
         st.text('')
         st.text('')
         st.text('')
         st.text('')    
-        FTable = st.beta_expander(label='Features table note')
-        with FTable: 
-            """
-            Here are the resulting guitar features!
-            Once the 4 features displayed in the table were collected from the original audio input using FFT and STFT above, they were passed through a neural network which transformed the features the predicted guitar features displayed in the table.
-            """
+        # FTable = st.beta_expander(label='Features table note')
+        # with FTable: 
+        #     """
+        #     Here are the resulting guitar features!
+        #     Once the 4 features displayed in the table were collected from the original audio input using FFT and STFT above, they were passed through a neural network which transformed the features the predicted guitar features displayed in the table.
+        #     """
 
 
     with guitar_gen_audio:
@@ -496,11 +502,11 @@ if get_user_data():
         st.image(image)
 
     with TTLS_real_piano:
-        st.title("Real piano")
+        st.title("Authentic piano")
         st.audio("TTLS/TTLS-real_piano.wav")
 
     with TTLS_real_guitar:
-        st.title("Real guitar")
+        st.title("Authentic guitar")
         st.audio("TTLS/TTLS-real_guitar.wav")
 
     with TTLS_gen_guitar:
