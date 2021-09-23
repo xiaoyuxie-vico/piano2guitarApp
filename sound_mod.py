@@ -59,8 +59,12 @@ TTLS_real_piano, TTLS_real_guitar, TTLS_gen_guitar = st.beta_columns([1, 1, 1])
 # Grabbing sound file data
 def get_user_data() -> bool:
     with input_file: 
-        str_1 = """You can download piano A4 key sound file from this [link](https://drive.google.com/file/d/1M3DsuEWyni7nriWUEDYV5Bm0cHouzIGu/view?usp=sharing)"""
-        st.markdown(str_1)
+        # st.markdown('### You can download piano sound files from these links:')
+        str_1 = "[A4](https://drive.google.com/file/d/1M3DsuEWyni7nriWUEDYV5Bm0cHouzIGu/view?usp=sharing)"
+        str_2 = "[B5](https://drive.google.com/file/d/1kKuqvcnndprUlUk7HJYcNDXMY0lUN6AQ/view?usp=sharing)"
+        str_3 = "[C5](https://drive.google.com/file/d/1VaMwbizezrByfnT3VJO5CtuEHBUFg1t7/view?usp=sharing)"
+        str_4 = "[D5](https://drive.google.com/file/d/1rFn41-4MXXiGD2YyAJVvdOUBIFsm6U-S/view?usp=sharing)"
+        st.markdown('### You can download piano sound files from these links: {}, {}, {}, {}'.format(str_1, str_2, str_3, str_4))
         uploaded_file = st.file_uploader('Choose a sound file', accept_multiple_files=False)
 
     if uploaded_file:
